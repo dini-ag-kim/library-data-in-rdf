@@ -5,7 +5,7 @@ my %uris = (
     lobid   => "http://lobid.org/resources/990186583900206441",
     dnb     => "https://d-nb.info/982315627",
     b3kat   => "http://lod.b3kat.de/title/BV022302814",
-    k10plus => "http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=555187721"
+    k10plus => "http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330"
 );
 
 say "Quellen und Anzahl von Triplen mit Abruf-URI";
