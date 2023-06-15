@@ -33,3 +33,6 @@ npm run -s extract http://lod.b3kat.de/title/BV022302814
 npm run -s extract http://uri.gbv.de/document/opac-de-627:ppn:555187721
 npm run -s extract http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=555187721
 ~~~
+
+Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an.
+
