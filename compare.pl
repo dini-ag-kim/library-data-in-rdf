@@ -24,4 +24,4 @@ say "\nGleiche Properties in mehreren Quellen";
 system("cat *.properties | sort | uniq -dc | sort -nrk1");
 
 say "\nGleiche Tripel in mehreren Quellen";
-system("cat *.nt | sort | uniq -d");
+system("cat *.nt | sort | uniq -dc | sort -nrk1");
