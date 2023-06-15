@@ -46,7 +46,7 @@ const sources = [
   },
   {
     namespace: "https://d-nb.info/",
-    fetch: getRDF,
+    fetch: uri => getRDF(`${uri}/about/lds`),
   },
   {
     namespace: "http://uri.gbv.de/document/opac-de-627:ppn:",
