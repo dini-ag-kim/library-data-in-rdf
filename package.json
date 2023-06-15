@@ -1,0 +1,17 @@
+{
+  "type": "module",
+  "scripts": {
+    "extract": "./extract.js",
+    "lint": "eslint --ignore-path .gitignore --ext .js .",
+    "fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "entities": "^4.5.0",
+    "jsonld": "^8.2.0",
+    "rdflib": "^2.2.32"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-gbv": "^1.0.5"
+  }
+}
