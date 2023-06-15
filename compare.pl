@@ -8,10 +8,11 @@ my %uris = (
     k10plus => "http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=555187721"
 );
 
+say "Quellen und Anzahl von Triplen mit Abruf-URI";
 while ( my ( $src, $uri ) = each %uris ) {
     print "$src.nt ";
 
-`npm run -s extract $uri | grep '$uri' | sed 's|$uri|http://example.org/|g' | sort > $src.nt`;
+`npm run -s extract $uri | grep '<$uri>' | sed 's|$uri|http://example.org/|g' | sort > $src.nt`;
 
     print `cat $src.nt | wc -l`;
 
@@ -19,8 +20,8 @@ while ( my ( $src, $uri ) = each %uris ) {
 
 }
 
-say "\nGleiche Properties";
+say "\nGleiche Properties in mehreren Quellen";
 system("cat *.properties | sort | uniq -dc | sort -nrk1");
 
-say "\nGleiche Statements";
+say "\nGleiche Tripel in mehreren Quellen";
 system("cat *.nt | sort | uniq -d");

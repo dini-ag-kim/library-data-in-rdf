@@ -29,12 +29,6 @@ const getRDF = async uri => {
   })
 }
 
-// rdflib does not know JSON-LD
-const getJSONLD = async uri => {
-  return get(uri).then(res => res.json()).then(doc => jsonld.toRDF(doc, {format: "application/n-quads"}))
-}
-
-
 const sources = [
   {
     namespace: "http://lod.b3kat.de/title/",
@@ -42,7 +36,11 @@ const sources = [
   },
   {
     namespace: "http://lobid.org/resources/",
-    fetch: getJSONLD,
+    fetch: async uri => {
+      const json = await get(uri).then(res => res.json())
+      json.id = json.id.replace(/#!$/,'') // WTF?
+      return jsonld.toRDF(json, {format: "application/n-quads"})
+    }
   },
   {
     namespace: "https://d-nb.info/",
