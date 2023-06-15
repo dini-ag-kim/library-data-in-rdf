@@ -45,7 +45,7 @@ const sources = [
     fetch: getJSONLD,
   },
   {
-    namespace: "https://d-nb.info/",
+    namespace: "http://d-nb.info/",
     fetch: getRDF,
   },
   {
