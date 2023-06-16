@@ -8,6 +8,15 @@ Die Titeldaten sollten alle den Empfehlungen der DINI-AG KIM folgen (https://wik
 
 ## Installation
 
+Repository klonen:
+
+~~sh
+git clone https://github.com/dini-ag-kim/library-data-in-rdf.git
+cd library-data-in-rdf
+~~~
+
+Dependencies installieren:
+
 ~~~sh
 npm install
 ~~~
