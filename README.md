@@ -45,7 +45,7 @@ npm run -s extract http://uri.gbv.de/document/opac-de-627:ppn:522231330
 npm run -s extract http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330
 ~~~
 
-Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an. Zusätzlich werden die RDF-Daten umgeschrieben und in `graph.ttl` zusammengeführt.
+Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an. Zusätzlich werden die RDF-Daten mittels [rules.n3](rules.n3) umgeschrieben und in `graph.ttl` zusammengeführt.
 
 ## Ergebnisse
 
@@ -70,5 +70,5 @@ Die [Auswertung an einem einzelnen Beispiel](https://github.com/dini-ag-kim/libr
 - b3kat verwendet nicht die offiziellen RVK-URIs
 - Zur Beziehung von Bibliographischer Entität und Katalogisat wird `wdrs:describedby` verwendet, ist das noch zeitgemäß oder gibt es eine andere, etablierte Property?
 - Es werden teilweise veraltete Vokabulare genutzt (<http://rdvocab.info/Elements/>, <http://bibframe.org/vocab/>...).
-- Soll `frbr:exemplar` oder `bibframe2:hasItem` zum Verweis auf Exemplare verwendet werden (GBV nutzte außerdem `data:eemplar`)?
+- Soll `frbr:exemplar` oder `bibframe2:hasItem` zum Verweis auf Exemplare verwendet werden (GBV nutzte außerdem `daia:exemplar`)?
 - Lobid verwendet RDF-Listen und blank nodes für Beitragende mit `bf:contribution`, was die Weiterverarbeitung erschwert.
