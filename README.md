@@ -6,6 +6,8 @@ Dieses Repository enthält Experimente zur Integration von Bibliotheksdaten (bis
 
 Anfang bis Mitte der 2010er Jahre wurde in Bibliotheken das Thema Linked Open Data diskutiert und umgesetzt. Zeugnis davon sind unter Anderem die seit 2009 stattfindende Konferenz [*Semantic Web in Bibliotheken*](https://swib.org/) und der Sammelband *(Open) Linked Data in Bibliotheken* (2013). Bis auf den GBV hatten bis 2013 alle deutschen Bibliotheksverbünde ihren Katalog in RDF publiziert und im selben Jahr gab die DINI AG KIM *[Empfehlung für die RDF-Repräsentation bibliografischer Daten](https://wiki.dnb.de/x/cYMOB)* heraus, die 2018 überarbeitet wurden.
 
+Inzwischen werden einige der Daten allerdings nicht mehr aktualisiert (B3kat: 2019).
+
 ## Installation
 
 Repository klonen:
@@ -43,7 +45,7 @@ npm run -s extract http://uri.gbv.de/document/opac-de-627:ppn:522231330
 npm run -s extract http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330
 ~~~
 
-Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an.
+Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an. Zusätzlich werden die RDF-Daten umgeschrieben und in `graph.ttl` zusammengeführt.
 
 ## Ergebnisse
 
@@ -56,7 +58,7 @@ Die [Auswertung an einem einzelnen Beispiel](https://github.com/dini-ag-kim/libr
   - lobid: <http://lobid.org/resources/990186583900206441#!>
   - dnb: <https://d-nb.info/982315627>
   - b3kat: <http://lod.b3kat.de/title/BV022302814> und <http://lod.b3kat.de/title/BV022522402#vol-4>
-  - k10plus: <http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330>
+  - k10plus: <http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330> und <http://uri.gbv.de/document/opac-de-627:ppn:522231330>
   - culturegraph: <http://hub.culturegraph.org/resource/BVB-BV022302814> und <http://hub.culturegraph.org/resource/DNB-982315627>
 
   Dabei wird mal `owl:sameAs`, mal `schema:sameAs` verwendet. Das wird von KIM auch so empfohlen, hilft aber nicht beim Zusammenführen der Daten.
@@ -65,4 +67,8 @@ Die [Auswertung an einem einzelnen Beispiel](https://github.com/dini-ag-kim/libr
   `owl:sameAs "http://d-nb.info/982315627"`
 - Die Verwendung von <http://purl.org/dc/elements/1.1/> vs <http://purl.org/dc/terms/> ist uneinheitlich: bei `title`, `identifier`, `publisher` und `subject`.
 - lobid modelliert die Beziehung zum übergeordneten Werk (Buchreihe) anders als die anderen Quellen. Beides entspricht den KIM-Empfehlungen, erschwert aber die Zusammenführung der Daten
-
+- b3kat verwendet nicht die offiziellen RVK-URIs
+- Zur Beziehung von Bibliographischer Entität und Katalogisat wird `wdrs:describedby` verwendet, ist das noch zeitgemäß oder gibt es eine andere, etablierte Property?
+- Es werden teilweise veraltete Vokabulare genutzt (<http://rdvocab.info/Elements/>, <http://bibframe.org/vocab/>...).
+- Soll `frbr:exemplar` oder `bibframe2:hasItem` zum Verweis auf Exemplare verwendet werden (GBV nutzte außerdem `data:eemplar`)?
+- Lobid verwendet RDF-Listen und blank nodes für Beitragende mit `bf:contribution`, was die Weiterverarbeitung erschwert.

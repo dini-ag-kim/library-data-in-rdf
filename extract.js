@@ -32,7 +32,7 @@ const getRDF = async uri => {
 const sources = [
   {
     namespace: "http://lod.b3kat.de/title/",
-    fetch: getRDF,
+    fetch: uri => getRDF(`${uri}?output=ttl`),
   },
   {
     namespace: "http://lobid.org/resources/",
@@ -44,10 +44,6 @@ const sources = [
   {
     namespace: "https://d-nb.info/",
     fetch: uri => getRDF(`${uri}/about/lds`),
-  },
-  {
-    namespace: "http://uri.gbv.de/document/opac-de-627:ppn:",
-    fetch: getRDF,
   },
   {
     namespace: "http://uri.gbv.de/document/opac-de-627:ppn:",
