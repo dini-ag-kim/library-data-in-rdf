@@ -9,7 +9,8 @@ my %uris = (
 );
 
 say "Quellen und Anzahl von Triplen mit Abruf-URI";
-while ( my ( $src, $uri ) = each %uris ) {
+for my $src ( sort keys %uris ) {
+    my $uri = $uris{$src};
     print "$src.nt ";
 
 `npm run -s extract $uri | grep '<$uri>' | sed 's|$uri|http://example.org/|g' | sort > $src.nt`;
