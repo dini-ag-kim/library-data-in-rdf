@@ -47,12 +47,13 @@ npm run -s extract http://swb.bsz-bw.de/DB=2.1/PRS=rdf/PPNSET?PPN=522231330
 
 Das Skript `compare.pl` ruft den gleichen Titel bei mehreren Verbünden auf und stellt einen groben Vergleich an. Zusätzlich werden die RDF-Daten mittels [rules.n3](rules.n3) umgeschrieben und in `graph.ttl` zusammengeführt.
 
-## Ergebnisse
+## Ergebnisse und persönliche Empfehlungen
 
 Die [Auswertung an einem einzelnen Beispiel](https://github.com/dini-ag-kim/library-data-in-rdf/issues/2) ist sicher nicht ganz aussagekräftig, es lässt sich aber bereits einiges feststellen:
 
-- Die Empfehlungen der DINI-AG KIM werden weitgehen befolgt
-- Die Datengrundlage ist unterschiedlich vollständig, daher unterschiedliche Ergebnisse
+- Die Empfehlungen der DINI-AG KIM werden weitgehen befolgt, sie sind aber an einigen Stellen unvollständig oder zu allgemein um einheitliche Daten zu gewährleisten
+- Die Datengrundlage ist unterschiedlich vollständig, auch daher unterschiedliche Ergebnisse
+- Nur lobid und DNB bieten aktuelle Daten. Bei B3Kat, Hebis und K10plus derzeit keine Updates (K10plus zumindest mit einem Hack)
 - Es gibt zahlreiche Identifier für die gleiche Resource:
 
   - lobid: <http://lobid.org/resources/990186583900206441#!>
@@ -65,10 +66,11 @@ Die [Auswertung an einem einzelnen Beispiel](https://github.com/dini-ag-kim/libr
 
 - b3kat und k10plus benutzen an verschiedenen Stellen fälschlicherweise strings statt URIs:
   `owl:sameAs "http://d-nb.info/982315627"`
-- Die Verwendung von <http://purl.org/dc/elements/1.1/> vs <http://purl.org/dc/terms/> ist uneinheitlich: bei `title`, `identifier`, `publisher` und `subject`.
+- Die Verwendung von <http://purl.org/dc/elements/1.1/> vs <http://purl.org/dc/terms/> ist uneinheitlich: bei `title`, `identifier`, `publisher` und `subject`. Dies sollte vereinheitlicht werden (nur noch DC Terms verwenden auch wenn die KIM-Empfehlungen anderes sagen).
 - lobid modelliert die Beziehung zum übergeordneten Werk (Buchreihe) anders als die anderen Quellen. Beides entspricht den KIM-Empfehlungen, erschwert aber die Zusammenführung der Daten
-- b3kat verwendet nicht die offiziellen RVK-URIs
+- b3kat verwendet nicht die offiziellen RVK-URIs (die allerdings erst einigen Jahren existieren)
 - Zur Beziehung von Bibliographischer Entität und Katalogisat wird `wdrs:describedby` verwendet, ist das noch zeitgemäß oder gibt es eine andere, etablierte Property?
 - Es werden teilweise veraltete Vokabulare genutzt (<http://rdvocab.info/Elements/>, <http://bibframe.org/vocab/>...).
-- Soll `frbr:exemplar` oder `bibframe2:hasItem` zum Verweis auf Exemplare verwendet werden (GBV nutzte außerdem `daia:exemplar`)?
-- Lobid verwendet RDF-Listen und blank nodes für Beitragende mit `bf:contribution`, was die Weiterverarbeitung erschwert.
+- Soll `frbr:exemplar` oder `bf:hasItem` zum Verweis auf Exemplare verwendet werden (GBV nutzte außerdem `daia:exemplar`)?
+- Lobid verwendet RDF-Listen und blank nodes für Beitragende mit `bf:contribution`, was die Weiterverarbeitung erschwert. Für Anfragen wo Reihenfolge und Art von Beitragenden egal sind, sollte eine ein einfaches Triple ohne Blank Node genügen.
+
