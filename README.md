@@ -6,7 +6,7 @@ Dieses Repository enthält Experimente zur Integration von Bibliotheksdaten (bis
 
 Anfang bis Mitte der 2010er Jahre wurde in Bibliotheken das Thema Linked Open Data diskutiert und umgesetzt. Zeugnis davon sind unter Anderem die seit 2009 stattfindende Konferenz [*Semantic Web in Bibliotheken*](https://swib.org/) und der Sammelband *(Open) Linked Data in Bibliotheken* (2013). Bis auf den GBV hatten bis 2013 alle deutschen Bibliotheksverbünde ihren Katalog in RDF publiziert und im selben Jahr gab die DINI AG KIM *[Empfehlung für die RDF-Repräsentation bibliografischer Daten](https://wiki.dnb.de/x/cYMOB)* heraus, die 2018 überarbeitet wurden.
 
-Inzwischen werden einige der Daten allerdings nicht mehr aktualisiert (B3kat: 2019).
+Inzwischen werden einige der Daten allerdings nicht mehr aktualisiert (B3kat, K10plus, HeBIS).
 
 ## Installation
 
