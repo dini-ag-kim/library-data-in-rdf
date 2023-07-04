@@ -38,7 +38,6 @@ const sources = [
     namespace: "http://lobid.org/resources/",
     fetch: async uri => {
       const json = await get(uri).then(res => res.json())
-      json.id = json.id.replace(/#!$/,'') // WTF?
       return jsonld.toRDF(json, {format: "application/n-quads"})
     }
   },
